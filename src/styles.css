@@ -44,6 +44,9 @@ img {
 
 /* nav */
 
+.navbar {
+  z-index: 1000;
+}
 .nav-link {
   color: #ffffffb0;
 }
@@ -52,6 +55,20 @@ img {
   color: rgba(255, 255, 255, 0.938);
 }
 
+.navbar-brand img {
+  width: 150px;
+}
+
+.navbar-collapse {
+  background-color: #f96b3d;
+  padding: 20px;
+}
+
+.username {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
 /* btn */
 
 .btn-principal {
@@ -139,7 +156,7 @@ img {
 
 .pokeImg img {
   cursor: pointer;
-  filter: drop-shadow(5px 9px 20px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(5px 9px 20px rgba(0, 0, 0, 0.2));
   transition: all 0.4s;
 }
 
@@ -484,5 +501,11 @@ footer a {
   .pokemonDescription {
     flex-direction: column;
     padding: 50px 0px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    background: none;
   }
 }

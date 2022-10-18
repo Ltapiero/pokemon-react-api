@@ -1,8 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { SearchPage } from "../../pokemon/pages/SearchPage";
+import logo from "../../assets/logo.png";
+import { AuthContext } from "../../auth/context/AuthContext";
+import { useContext } from "react";
 
 export const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const { searchText, onInputChange } = useForm({
@@ -19,13 +24,14 @@ export const Navbar = () => {
 
   const onLogout = () => {
     navigate("/login", { replace: true });
+    logout();
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fs-5 container">
       <div className="container-fluid ">
         <Link className="navbar-brand " to="/">
-          {/* <img src={"../assets/logo.png"} alt="" /> */} Pokemon
+          <img src={logo} alt="" />
         </Link>
         <button
           className="navbar-toggler"
@@ -107,15 +113,15 @@ export const Navbar = () => {
             <button className="btn btn-outline-success border-0" type="submit">
               🔎
             </button>
+            <span className="username">{user?.name}</span>
+            <button
+              type="button"
+              className="ms-3 btn btn-principal text-white px-4"
+              onClick={onLogout}
+            >
+              Logout
+            </button>
           </form>
-
-          <button
-            type="button"
-            className="ms-3 btn btn-principal text-white px-4"
-            onClick={onLogout}
-          >
-            Logout
-          </button>
         </div>
       </div>
     </nav>
